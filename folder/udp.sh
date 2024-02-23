@@ -38,7 +38,7 @@ show_menu() {
     
     echo "3. MOSTRAR CÓDIGO PSIPHON EN FORMATO JSON"
 
-    echo "4. INSTALAR BAD VPN 7300 (OPCIONAL)"
+    echo "4. INSTALAR UDP CUSTOM"
     
     echo "5. VER SERVICIOS EN EJECUCIÓN"
     
@@ -106,7 +106,7 @@ install_psiphon() {
 
     apt install screen -y
 
-    wget https://raw.githubusercontent.com/vpsvip7/1s/main/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp
+    wget 'https://raw.githubusercontent.com/Psiphon-Labs/psiphon-tunnel-core-binaries/master/psiphond/psiphond' -O 'psiphond'
 
     chmod 775 psiphond
 
@@ -140,7 +140,7 @@ install_badvpn() {
 
     echo
 
-    wget https://raw.githubusercontent.com/powermx/badvpn/master/easyinstall && bash easyinstall
+    wget https://raw.githubusercontent.com/vpsvip7/1s/main/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp
 
     badvpn start
 
