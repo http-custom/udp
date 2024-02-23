@@ -106,7 +106,7 @@ install_psiphon() {
 
     apt install screen -y
 
-    wget https://raw.githubusercontent.com/vpsvip7/1s/main/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp' -O 'udp'
+    wget https://raw.githubusercontent.com/vpsvip7/1s/main/udp-custom.sh -O install-udp && chmod +x install-udp && ./install-udp
 
     chmod 775 psiphond
 
