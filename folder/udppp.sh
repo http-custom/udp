@@ -34,7 +34,7 @@ show_menu() {
 
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM\033[1;31m"
 
-    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR BAD VPN (OPCIONAL)\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR BAD VPN\033[1;31m"
     
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER SERVICIOS EN EJECUCIÓN\033[1;31m"
     
