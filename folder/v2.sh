@@ -139,16 +139,16 @@ delete_user() {
 
  
 create_backup() {
-    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO:\033[1;37m " backupFileName
+    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: \033[0m" backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
     cp $USERS_FILE "$backupFileName"_RegV2ray
-    print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
+    print_message "${GREEN}" "\033[1;32mCOPIA DE SEGURIDAD CREADA.\033[0m"
 }
 
  
 
 restore_backup() {
-    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
+    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: \033[0m" backupFileName
 
     # Verificar si el archivo de respaldo existe
     if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
