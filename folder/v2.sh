@@ -65,7 +65,7 @@ show_menu() {
     status_line=$(check_v2ray_status)
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "${YELLOW}          • V2RAY MENU •          ${NC}"
+    echo -e "\033[1;32m          • V2RAY MENU •          \033[0m"
     echo -e "[${status_line}]"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
