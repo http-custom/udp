@@ -53,9 +53,9 @@ print_message() {
 
 check_v2ray_status() {
     if systemctl is-active --quiet v2ray; then
-        echo -e "\033[1;33mV2RAT ESTÁ \033[1;32mACTIVO\033[0m"
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;32mACTIVO\033[0m"
     else
-        echo -e "${YELLOW}V2RAY ESTÁ ${RED}DESACTIVADO${NC}"
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;31mDESACTIVADO\033[0m"
     fi
 }
 
