@@ -64,10 +64,10 @@ show_menu() {
     local status_line
     status_line=$(check_v2ray_status)
 
-    echo -e "${CYAN}╔════════════════════════════════════════════════════╗${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "${YELLOW}          • V2RAY MENU •          ${NC}"
     echo -e "[${status_line}]"
-    echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;32mCAMBIAR EL PATH DE V2RAY\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;32mVER CONFIG.JSON\033[1;31m"
@@ -77,7 +77,7 @@ show_menu() {
     echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;32mREINICIAR V2RAY\033[1;31m"
     echo -e "[\033[1;36m 8:\033[1;31m] \033[1;37m• \033[1;32mINSTALAR/DESINSTALAR V2RAY\033[1;31m"
     echo -e "[\033[1;36m 9:\033[1;31m] \033[1;37m• \033[1;32mSALIR\033[1;31m"
-    echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
 }
 
@@ -85,7 +85,7 @@ show_backup_menu() {
     echo -e "\033[1;32mOPCIONES DE V2RAY BACKUP:\033[0m"
     echo -e "1. ${GREEN}CREAR COPIA DE SEGURIDAD${NC}"
     echo -e "2. ${GREEN}RESTAURAR COPIA DE SEGURIDAD${NC}"
-    echo -e "${CYAN}==========================${NC}"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     read -p "Seleccione una opción: " backupOption
 
     case $backupOption in
