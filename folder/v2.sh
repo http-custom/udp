@@ -53,7 +53,7 @@ print_message() {
 
 check_v2ray_status() {
     if systemctl is-active --quiet v2ray; then
-        echo -e "${YELLOW}V2RAT ESTÁ ${GREEN}ACTIVO${NC}"
+        echo -e "\n\033[1;33mV2RAT ESTÁ \033[1;32mACTIVO\033[0m"
     else
         echo -e "${YELLOW}V2RAY ESTÁ ${RED}DESACTIVADO${NC}"
     fi
@@ -139,16 +139,16 @@ delete_user() {
 
  
 create_backup() {
-    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: \033[0m" backupFileName
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
     cp $USERS_FILE "$backupFileName"_RegV2ray
-    print_message "${GREEN}" "\033[1;32mCOPIA DE SEGURIDAD CREADA.\033[0m"
+    print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
 }
 
  
 
 restore_backup() {
-    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: \033[0m" backupFileName
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
 
     # Verificar si el archivo de respaldo existe
     if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
