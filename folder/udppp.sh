@@ -86,7 +86,7 @@ install_udp() {
     
     echo "EN CASO DE NO FUNCIONAR REINICIE LA VPS"
     
-    echo "PUERTO POR DEFECTO (1-65535)"
+    echo "PUERTO POR DEFECTO 1-65535"
     
     echo "————————————————————————————————————————————————————"
 
