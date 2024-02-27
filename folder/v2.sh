@@ -139,7 +139,7 @@ delete_user() {
 
  
 create_backup() {
-    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
+    read -p "\033[1;32mINGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO:\033[1;37m " backupFileName
     cp $CONFIG_FILE "$backupFileName"_config.json
     cp $USERS_FILE "$backupFileName"_RegV2ray
     print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
