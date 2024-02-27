@@ -70,7 +70,7 @@ show_menu() {
     echo -e "${CYAN}╚════════════════════════════════════════════════════╝${NC}"
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;32mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;32mCAMBIAR EL PATH DE V2RAY\033[1;31m"
-    echo -e "3.[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;32mVER CONFIG.JSON\033[1;31m"
+    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;32mVER CONFIG.JSON\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;32mVER INFORMACIÓN DE VMESS\033[1;31m"
     echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;32mESTATÍSTICAS DE CONSUMO\033[1;31m"
     echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;32mENTRAR AL V2RAY NATIVO\033[1;31m"
