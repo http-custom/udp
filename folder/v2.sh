@@ -82,7 +82,7 @@ show_menu() {
 }
 
 show_backup_menu() {
-    echo -e "\033[1;32mOPCIONES DE V2RAY BACKUP: "
+    echo -e "\e[92mOPCIONES DE V2RAY BACKUP: "
     echo -e "1. ${GREEN}CREAR COPIA DE SEGURIDAD${NC}"
     echo -e "2. ${GREEN}RESTAURAR COPIA DE SEGURIDAD${NC}"
     echo -e "${CYAN}==========================${NC}"
