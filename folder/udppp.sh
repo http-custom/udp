@@ -71,11 +71,7 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST SOCKSIP\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM\033[1;31m"
-    echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mESTATÍSTICAS DE CONSUMO\033[1;31m"
-    echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mENTRAR AL V2RAY NATIVO\033[1;31m"
-    echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR V2RAY\033[1;31m"
-    echo -e "[\033[1;36m 8:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR/DESINSTALAR V2RAY\033[1;31m"
-    echo -e "[\033[1;33m 9:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
+    echo -e "[\033[1;33m 5:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
 }
@@ -284,15 +280,6 @@ while true; do
             show_vmess_by_uuid
             ;;
         5)
-            add_user
-            ;;
-        6)
-            entrar_v2ray_original
-            ;;
-        7)
-            delete_user
-            ;;
-        8)
             while true; do
                 echo "Seleccione una opción para V2Ray:"
                 echo "1. Instalar V2Ray"
