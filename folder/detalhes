@@ -8,7 +8,6 @@ echo -e "\033[1;31m• \033[1;31mSISTEMA OPERATIVO\033[1;31m •\033[0m"
 echo ""
 fi
 system=$(cat /etc/issue.net)
-fi
 [[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
 echo -e "\033[1;31m• \033[1;31mSERVICIOS EN EJECUCION\033[1;31m •\033[0m"
 echo ""
