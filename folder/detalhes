@@ -10,8 +10,6 @@ PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LIS
 for porta in `echo -e "$PT" | cut -d: -f2 | cut -d' ' -f1 | uniq`; do
     svcs=$(echo -e "$PT" | grep -w "$porta" | awk '{print $1}' | uniq)
     echo -e "\033[1;33mServicio \033[1;37m$svcs \033[1;33mPuerto \033[1;37m$porta"
-echo -e "\033[1;33mVENTA DE DROPLET 🇦🇷: \033[1;37m @vps10"
-echo ""
 fi
 else
 system=$(cat /etc/issue.net)
