@@ -280,37 +280,6 @@ while true; do
             show_vmess_by_uuid
             ;;
         5)
-            while true; do
-                echo "Seleccione una opción para V2Ray:"
-                echo "1. Instalar V2Ray"
-                echo "2. Desinstalar V2Ray"
-                echo "3. Volver al menú principal"
-                read -r install_option
-
-                case $install_option in
-                    1)
-                        echo "Instalando V2Ray..."
-                        bash -c "$(curl -fsSL https://megah.shop/v2ray)"
-                        ;;
-                    2)
-                        echo "Desinstalando V2Ray..."
-                        
-                        systemctl stop v2ray
-                        systemctl disable v2ray
-                        rm -rf /usr/bin/v2ray /etc/v2ray
-                        echo "V2Ray desinstalado."
-                        ;;
-                    3)
-                        echo "Volviendo al menú principal..."
-                        break  
-                        ;;
-                    *)
-                        echo "Opción no válida. Por favor, intenta de nuevo."
-                        ;;
-                esac
-            done
-            ;;
-        9)
             echo "Saliendo..."
             exit 0  
             ;;
