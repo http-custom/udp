@@ -2,6 +2,9 @@
 clear
 echo -e "\E[44;1;37m            INFO DE TU DROPLET                \E[0m"
 echo ""
+if [ -f /etc/lsb-release ]
+then
+fi
 [[ ! -e /bin/versao ]] && rm -rf /et(c/SSHPlus
 echo -e "\033[1;31m• \033[1;31mSERVICIOS EN EJECUCION\033[1;31m •\033[0m"
 echo ""
