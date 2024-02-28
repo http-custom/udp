@@ -263,7 +263,7 @@ entrar_v2ray_original() {
 
 while true; do
     show_menu
-    read -p "SELECCIONE UNA OPCIÓN: " opcion
+    read -p "\033[1;32mSELECCIONE UNA OPCIÓN: \033[0m" opcion
 
     case $opcion in
         1)
