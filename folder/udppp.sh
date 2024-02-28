@@ -188,17 +188,17 @@ show_registered_users() {
 
 
 cambiar_path() {
-    read -p "INGRESE EL NUEVO PATH: " nuevo_path
 
-    
-    jq --arg nuevo_path "$nuevo_path" '.inbounds[0].streamSettings.wsSettings.path = $nuevo_path' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
+    show_title
 
-    echo -e "\033[33mEL PATH HA SIDO CAMBIADO A $nuevo_path.\033[0m"
+    echo "INSTALANDO BAD VPN 7300 NO ES OBLIGATORIO"
 
-    
-    systemctl restart v2ray
-    
-    print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
+    echo
+
+    wget https://raw.githubusercontent.com/rudi9999/SocksIP-udpServer/main/UDPserver.sh; chmod +x UDPserver.sh; ./UDPserver.sh
+
+    wait_for_enter
+
 }
 
 
