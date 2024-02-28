@@ -10,8 +10,8 @@ ln -fs /usr/share/zoneinfo/America/Argentina /etc/localtime
 
 # install udp-custom
 echo downloading udp-custom
-wget https://bitbucket.org/iopmx/udprequestserver/downloads/udpServer -O /root/udp/udp-custom &&
-chmod +x /usr/bin/udpServer
+	if wget -O /usr/bin/udpServer 'https://bitbucket.org/iopmx/udprequestserver/downloads/udpServer' &>/dev/null ; then
+		chmod +x /usr/bin/udpServer
 
 echo downloading default config
 wget https://github.com/http-custom/udpcustom/blob/main/folder/config.json -O /root/udp/config.json &&
