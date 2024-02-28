@@ -43,4 +43,3 @@ EOF
 	else
 		msg -verm2 'fail'
 	fi
-}
