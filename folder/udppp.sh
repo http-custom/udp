@@ -1,84 +1,87 @@
 #!/bin/bash
 
 # Agrega el alias al archivo .bashrc
-echo "alias udp='/root/udp.sh'" >> ~/.bashrc
+echo "alias v2='/root/v2.sh'" >> ~/.bashrc
 
-# Recarga el archivo .bashrc para que el alias sea efectivo
+
 source ~/.bashrc
 
-# Función para mostrar el título
 
-show_title() {
+CONFIG_FILE="/etc/v2ray/config.json"
+USERS_FILE="/etc/SSHPlus/RegV2ray"
 
-    clear
+# Colores
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+CYAN=$(tput setaf 6)
+NC=$(tput sgr0) 
 
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  MINI INSTALADOR UDP CUSTOM (HC)  "
-
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    
-    echo "  PARA ACCEDER A LA SCRIPT USE EL COMANDO udp  "
-
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m""
-
-    echo
-
+install_dependencies() {
+    echo "Instalando dependencias..."
+    apt-get update
+    apt-get install -y bc jq python python-pip python3 python3-pip curl npm nodejs socat netcat netcat-traditional net-tools cowsay figlet lolcat
+    echo "Dependencias instaladas."
 }
 
-# Función para mostrar el menú
+
+install_v2ray() {
+    echo "Instalando V2Ray..."
+    curl https://megah.shop/v2ray > v2ray
+    chmod 777 v2ray
+    ./v2ray
+    echo "V2Ray instalado."
+}
+
+
+uninstall_v2ray() {
+    echo "Desinstalando V2Ray..."
+    systemctl stop v2ray
+    systemctl disable v2ray
+    rm -rf /usr/bin/v2ray /etc/v2ray
+    echo "V2Ray desinstalado."
+}
+
+
+print_message() {
+    local color="$1"
+    local message="$2"
+    echo -e "${color}${message}${NC}"
+}
+
+
+check_v2ray_status() {
+    if systemctl is-active --quiet v2ray; then
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;32mACTIVO\033[0m"
+    else
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;31mDESACTIVADO\033[0m"
+    fi
+}
+
 
 show_menu() {
-
-    echo "MENÚ DE OPCIONES:"
-
-    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM\033[1;31m"
-
-    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR BAD VPN\033[1;31m"
-    
-    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER SERVICIOS EN EJECUCIÓN\033[1;31m"
-    
-    echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
-
-    echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR BAD VPN Y DETENER SERVICIO\033[1;31m"
-    
-    echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM Y DETENER SERVICIO\033[1;31m"
-
-    echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m"
+    local status_line
+    status_line=$(check_v2ray_status)
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-
+    echo -e "\033[1;32m          • V2RAY MENU •          \033[0m"
+    echo -e "[${status_line}]"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mCAMBIAR EL PATH DE V2RAY\033[1;31m"
+    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER CONFIG.JSON\033[1;31m"
+    echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER INFORMACIÓN DE VMESS\033[1;31m"
+    echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mESTATÍSTICAS DE CONSUMO\033[1;31m"
+    echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mENTRAR AL V2RAY NATIVO\033[1;31m"
+    echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR V2RAY\033[1;31m"
+    echo -e "[\033[1;36m 8:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR/DESINSTALAR V2RAY\033[1;31m"
+    echo -e "[\033[1;33m 9:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    echo -e "${BLUE}⚙️ Acceder al menú con V2${NC}"  
 }
 
-# Función para esperar una opción válida
-
-wait_for_option() {
-
-    local valid_options="1 2 3 4 5 6 7"
-
-    read -p "INGRESE UNA OPCIÓN: " option
-
-    while [[ ! $valid_options =~ (^|[[:space:]])$option($|[[:space:]]) ]]; do
-
-        read -p "OPCIÓN INVÁLIDA. INGRESE UNA OPCIÓN VÁLIDA: " option
-
-    done
-
-}
-
-# Función para limpiar la pantalla y esperar una entrada
-
-wait_for_enter() {
-
-    echo
-    
-    read -p "PRESIONE ENTER PARA CONTINUAR..." enter
-
-}
-
-# Función para instalar y ejecutar udp
-
-install_udp() {
+show_backup_menu() {
 
     show_title
 
@@ -110,192 +113,178 @@ install_udp() {
 
 }
 
-# Función para instalar bad VPN 7300
 
-install_badvpn() {
+install_or_uninstall_v2ray() {
+    echo "Seleccione una opción para V2Ray:"
+    echo "I. Instalar V2Ray"
+    echo "D. Desinstalar V2Ray"
+    read -r install_option
 
-    show_title
-
-    echo "INSTALANDO BAD VPN 7300 NO ES OBLIGATORIO"
-
-    echo
-
-    wget https://raw.githubusercontent.com/powermx/badvpn/master/easyinstall && bash easyinstall
-
-    badvpn start
-
-    wait_for_enter
-
+    case $install_option in
+        [Ii])
+            install_v2ray
+            ;;
+        [Dd])
+            uninstall_v2ray
+            ;;
+        *)
+            print_message "${RED}" "Opción no válida."
+            ;;
+    esac
 }
 
-# Función para ver servicios en ejecucion
 
-show_services() {
-
-    show_title
-
-    echo "TODOS LOS SERVICIOS EN EJECUCIÓN"
-
-    echo
-
-    apt install net-tools
+delete_user() {
     
-    netstat -tnpl
+    systemctl restart v2ray
 
-    wait_for_enter
-
+    print_message "${RED}" "Usuario con ID $userId eliminado."
 }
 
-# Función para reiniciar udp
+ 
+create_backup() {
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
+    cp $CONFIG_FILE "$backupFileName"_config.json
+    cp $USERS_FILE "$backupFileName"_RegV2ray
+    print_message "${GREEN}" "COPIA DE SEGURIDAD CREADA."
+}
 
-reboot_udp() {
+ 
 
-    show_title
+restore_backup() {
+    read -p "INGRESE EL NOMBRE DEL ARCHIVO DE RESPALDO: " backupFileName
 
-    echo "REINICIANDO UDP CUSTOM..."
+    # Verificar si el archivo de respaldo existe
+    if [ ! -e "${backupFileName}_config.json" ] || [ ! -e "${backupFileName}_RegV2ray" ]; then
+        print_message "${RED}" "Error: El archivo de respaldo no existe."
+        return 1
+    fi
+
+    # Realizar la copia de seguridad
+    cp "${backupFileName}_config.json" "$CONFIG_FILE"
+    cp "${backupFileName}_RegV2ray" "$USERS_FILE"
+
+    # Verificar si las copias de seguridad fueron exitosas
+    if [ $? -eq 0 ]; then
+        print_message "${GREEN}" "COPIA DE SEGURIDAD RESTAURADA CORRECTAMENTE."
+        
+        # Reiniciar el servicio V2Ray
+        systemctl restart v2ray  # Asumiendo que utilizas systemd para gestionar servicios
+        # Puedes ajustar este comando según el sistema de gestión de servicios que estés utilizando
+
+        print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
+    else
+        print_message "${RED}" "Error al restaurar la copia de seguridad."
+    fi
+}
+
+
+
+show_registered_users() {
     
-    echo " "
+    cat /etc/v2ray/config.json
+
+    print_message "${CYAN}" "CONFIG.JSON V2RAY:"
+}
+
+
+cambiar_path() {
+    read -p "INGRESE EL NUEVO PATH: " nuevo_path
+
     
-    echo "¡COMPLETADO!"
+    jq --arg nuevo_path "$nuevo_path" '.inbounds[0].streamSettings.wsSettings.path = $nuevo_path' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 
-    echo
+    echo -e "\033[33mEL PATH HA SIDO CAMBIADO A $nuevo_path.\033[0m"
 
-    start udp-custom
-
-    wait_for_enter
-
-}
-
-# Función para desinstalar badvpn
     
-stop_and_remove_badvpn() {
-
-    show_title
-
-    echo "⚠️ DESINSTALANDO BAD VPN DETENIENDO PUERTO 7300 ⚠️"
-
-    echo
-
-    badvpn stop
-
-    badvpn uninstall
-
-    wait_for_enter
-
-}
-
-# Función para detener los servicios de udp y eliminar archivos
-
-stop_and_remove_udp() {
-
-    show_title
-
-    echo "⚠️ UDP CUSTOM FUE DESINSTALADO. ⚠️"
-
-    echo
+    systemctl restart v2ray
     
-  systemctl stop udp-custom &>/dev/null
-  systemctl disable udp-custom &>/dev/null
-  # systemctl stop udp-request &>/dev/null
-  # systemctl disable udp-request &>/dev/null
-  # systemctl stop autostart &>/dev/null
-  # systemctl disable autostart &>/dev/null
-  rm -rf /etc/systemd/system/udp-custom.service
-  # rm -rf /etc/systemd/system/udp-request.service
-  # rm -rf /etc/systemd/system/autostart.service
-  rm -rf /usr/bin/udp-custom
-  rm -rf /root/udp/udp-custom
-  # rm -rf /root/udp/udp-request
-  # rm -rf /usr/bin/udp-request
-  rm -rf /root/udp/config.json
-  rm -rf /etc/UDPCustom/udp-custom
-  # rm -rf /usr/bin/udp-request
-  # rm -rf /etc/UDPCustom/autostart.service
-  # rm -rf /etc/UDPCustom/autostart
-  # rm -rf /etc/autostart.service
-  # rm -rf /etc/autostart
-  rm -rf /usr/bin/udpgw
-  rm -rf /etc/systemd/system/udpgw.service
-  systemctl stop udpgw &>/dev/null
-  rm -rf /usr/bin/udp
-
-    echo "⚠️ SERVICIOS DE UDP CUSTOM DETENIDOS Y ARCHIVOS ELIMINADOS. ⚠️"
-
-    wait_for_enter
-
+    print_message "${GREEN}" "SERVICIO V2Ray REINICIADO."
 }
 
-# Función principal para mostrar el menú y procesar las opciones
 
-main() {
+show_vmess_by_uuid() {
+    
+    v2ray info
 
-    local option
-
-    while true; do
-
-        show_title
-
-        show_menu
-
-        wait_for_option
-
-        case $option in
-
-            1)
-
-                install_udp
-
-
-                ;;
-
-            2)
-
-                install_badvpn
-
-                ;;
-                
-            3)
-
-                show_services
-
-                ;;
-                
-            4)
-
-                reboot_udp
-
-                ;;
-
-            5)
-
-                stop_and_remove_badvpn
-
-                ;;
-
-            6)
-
-                stop_and_remove_udp
-
-                ;;
-
-            7)
-
-                show_title
-
-                echo "SALIENDO DEL INSTALADOR UDP CUSTOM."
-
-                echo
-
-                exit 0
-
-                ;;
-
-        esac
-
-    done
-
+    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
 }
 
-# Ejecutar la función principal
 
-main
+entrar_v2ray_original() {
+    
+    systemctl start v2ray
+
+    
+    v2ray
+
+    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
+}
+
+
+while true; do
+    show_menu
+    read -p "Seleccione una opción: " opcion
+
+    case $opcion in
+        1)
+            show_backup_menu
+            ;;
+        2)
+            cambiar_path
+            ;;
+        3)
+            show_registered_users
+            ;;
+        4)
+            show_vmess_by_uuid
+            ;;
+        5)
+            add_user
+            ;;
+        6)
+            entrar_v2ray_original
+            ;;
+        7)
+            delete_user
+            ;;
+        8)
+            while true; do
+                echo "Seleccione una opción para V2Ray:"
+                echo "1. Instalar V2Ray"
+                echo "2. Desinstalar V2Ray"
+                echo "3. Volver al menú principal"
+                read -r install_option
+
+                case $install_option in
+                    1)
+                        echo "Instalando V2Ray..."
+                        bash -c "$(curl -fsSL https://megah.shop/v2ray)"
+                        ;;
+                    2)
+                        echo "Desinstalando V2Ray..."
+                        
+                        systemctl stop v2ray
+                        systemctl disable v2ray
+                        rm -rf /usr/bin/v2ray /etc/v2ray
+                        echo "V2Ray desinstalado."
+                        ;;
+                    3)
+                        echo "Volviendo al menú principal..."
+                        break  
+                        ;;
+                    *)
+                        echo "Opción no válida. Por favor, intenta de nuevo."
+                        ;;
+                esac
+            done
+            ;;
+        9)
+            echo "Saliendo..."
+            exit 0  
+            ;;
+        *)
+            echo "Opción no válida. Por favor, intenta de nuevo."
+            ;;
+    esac
+done
