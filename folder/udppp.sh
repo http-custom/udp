@@ -85,11 +85,11 @@ show_backup_menu() {
     
     echo "PUERTO POR DEFECTO 1-65535"
     
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  BINARIO SOLO FUNCIONA EN HTTP CUSTOM  "
+    echo -e "\033[1;33m             BINARIO SOLO FUNCIONA EN HTTP CUSTOM                 \033[0m"
 
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
     echo
 
