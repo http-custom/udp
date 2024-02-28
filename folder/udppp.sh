@@ -238,7 +238,7 @@ show_vmess_by_uuid() {
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  ¡UDP CUSTOM DESINSTALDO!  "
+    echo -e "\033[1;33m             ¡UDP CUSTOM DESINSTALADO!                 \033[0m"
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     
