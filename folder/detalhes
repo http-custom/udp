@@ -2,7 +2,8 @@
 clear
 echo -e "\E[44;1;37m            INFO DE TU DROPLET                \E[0m"
 echo ""
-if [[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
+fi
+[[ ! -e /bin/versao ]] && rm -rf /et(c/SSHPlus
 echo -e "\033[1;31m• \033[1;31mSERVICIOS EN EJECUCION\033[1;31m •\033[0m"
 echo ""
 PT=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
