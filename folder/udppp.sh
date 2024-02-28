@@ -174,21 +174,18 @@ restore_backup() {
 
 show_registered_users() {
 
-    show_title
-
-    echo "REINICIANDO UDP CUSTOM..."
-    
-    echo " "
-    
-    echo "¡COMPLETADO!"
-
     echo
 
     start udp-custom
 
-    wait_for_enter
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    print_message "${CYAN}" "CONFIG.JSON V2RAY:"
+    echo -e "\033[1;32m             ¡UDP CUSTOM REINICIADO!                 \033[0m"
+
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    
+    echo
+
 }
 
 
