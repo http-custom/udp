@@ -264,7 +264,7 @@ while true; do
             show_vmess_by_uuid
             ;;
         5)
-            echo "Saliendo..."
+            echo -e "\033[1;33mSALIENDO...\033[0m"
             exit 0  
             ;;
         *)
