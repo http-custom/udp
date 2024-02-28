@@ -68,9 +68,9 @@ show_menu() {
 echo -e "\E[41;1;37m                ELIJA BINARIO UDP                 \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM HTTP CUSTOM\033[1;31m"
-    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mCAMBIAR EL PATH DE V2RAY\033[1;31m"
-    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER CONFIG.JSON\033[1;31m"
-    echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER INFORMACIÓN DE VMESS\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST SOCKSIP\033[1;31m"
+    echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
+    echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 5:\033[1;31m] \033[1;37m• \033[1;33mESTATÍSTICAS DE CONSUMO\033[1;31m"
     echo -e "[\033[1;36m 6:\033[1;31m] \033[1;37m• \033[1;33mENTRAR AL V2RAY NATIVO\033[1;31m"
     echo -e "[\033[1;36m 7:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR V2RAY\033[1;31m"
@@ -180,8 +180,20 @@ restore_backup() {
 
 
 show_registered_users() {
+
+    show_title
+
+    echo "REINICIANDO UDP CUSTOM..."
     
-    cat /etc/v2ray/config.json
+    echo " "
+    
+    echo "¡COMPLETADO!"
+
+    echo
+
+    start udp-custom
+
+    wait_for_enter
 
     print_message "${CYAN}" "CONFIG.JSON V2RAY:"
 }
@@ -202,9 +214,42 @@ cambiar_path() {
 }
 
 
-show_vmess_by_uuid() {
+show_vmess_by_uuid() ) {
+
+    show_title
+
+    echo "⚠️ UDP CUSTOM FUE DESINSTALADO. ⚠️"
+
+    echo
     
-    v2ray info
+  systemctl stop udp-custom &>/dev/null
+  systemctl disable udp-custom &>/dev/null
+  # systemctl stop udp-request &>/dev/null
+  # systemctl disable udp-request &>/dev/null
+  # systemctl stop autostart &>/dev/null
+  # systemctl disable autostart &>/dev/null
+  rm -rf /etc/systemd/system/udp-custom.service
+  # rm -rf /etc/systemd/system/udp-request.service
+  # rm -rf /etc/systemd/system/autostart.service
+  rm -rf /usr/bin/udp-custom
+  rm -rf /root/udp/udp-custom
+  # rm -rf /root/udp/udp-request
+  # rm -rf /usr/bin/udp-request
+  rm -rf /root/udp/config.json
+  rm -rf /etc/UDPCustom/udp-custom
+  # rm -rf /usr/bin/udp-request
+  # rm -rf /etc/UDPCustom/autostart.service
+  # rm -rf /etc/UDPCustom/autostart
+  # rm -rf /etc/autostart.service
+  # rm -rf /etc/autostart
+  rm -rf /usr/bin/udpgw
+  rm -rf /etc/systemd/system/udpgw.service
+  systemctl stop udpgw &>/dev/null
+  rm -rf /usr/bin/udp
+
+    echo "⚠️ SERVICIOS DE UDP CUSTOM DETENIDOS Y ARCHIVOS ELIMINADOS. ⚠️"
+
+    wait_for_enter
 
     print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
 }
