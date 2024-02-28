@@ -214,7 +214,7 @@ cambiar_path() {
 }
 
 
-show_vmess_by_uuid() ) {
+show_vmess_by_uuid() {
 
     show_title
 
