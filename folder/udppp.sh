@@ -51,10 +51,12 @@ print_message() {
 }
 
 
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[41;1;37m     ⇱ ⭐⭐⭐ ARGENTINA🇦🇷:@diegovip7⇲       \E[0m"
-echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-
+check_v2ray_status() {
+    if systemctl is-active --quiet v2ray; then
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;32mACTIVO\033[0m"
+    else
+        echo -e "\033[1;33mV2RAY ESTÁ \033[1;31mDESACTIVADO\033[0m"
+    fi
 }
 
 
@@ -62,9 +64,9 @@ show_menu() {
     local status_line
     status_line=$(check_v2ray_status)
 
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\033[1;32m          • V2RAY MENU •          \033[0m"
-    echo -e "[${status_line}]"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+echo -e "\E[41;1;37m     ⇱ ⭐⭐⭐ ARGENTINA🇦🇷:@diegovip7⇲       \E[0m"
+echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mCAMBIAR EL PATH DE V2RAY\033[1;31m"
