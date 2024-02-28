@@ -77,13 +77,13 @@ echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━�
 
 show_backup_menu() {
 
-    show_title
+    echo
 
-    echo "INSTALANDO UDP CUSTOM ESPERE..."
+    echo -e "\033[1;32mINSTALANDO UDP CUSTOM ESPERE...[0m"
     
-    echo "EN CASO DE NO FUNCIONAR REINICIE LA VPS"
+    echo -e "\033[1;32mEN CASO DE NO FUNCIONAR REINICIE LA VPS[0m"
     
-    echo "PUERTO POR DEFECTO 1-65535"
+    echo -e "\033[1;32mPUERTO POR DEFECTO 1-65535[0m"
     
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
@@ -102,8 +102,6 @@ show_backup_menu() {
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     
     echo
-
-    wait_for_enter
 
 }
 
