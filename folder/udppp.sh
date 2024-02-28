@@ -65,10 +65,9 @@ show_menu() {
     status_line=$(check_v2ray_status)
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[41;1;37m     ⇱ ⭐⭐⭐ ARGENTINA🇦🇷:@diegovip7⇲       \E[0m"
+echo -e "\E[41;1;37m     ⇱ELIJA BINARIO UP⇲       \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mGESTIÓN DE COPIAS DE SEGURIDAD UUID\033[1;31m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CISTOM HTTP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mCAMBIAR EL PATH DE V2RAY\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mVER CONFIG.JSON\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mVER INFORMACIÓN DE VMESS\033[1;31m"
