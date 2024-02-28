@@ -2,10 +2,6 @@
 clear
 echo -e "\E[44;1;37m            INFO DE TU DROPLET                \E[0m"
 echo ""
-if [ -f /etc/lsb-release ]
-then
-echo -e "\033[1;31m• \033[1;31mSISTEMA OPERATIVO\033[1;31m •\033[0m"
-echo ""
 fi
 system=$(cat /etc/issue.net)
 [[ ! -e /bin/versao ]] && rm -rf /etc/SSHPlus
