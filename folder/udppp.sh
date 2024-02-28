@@ -210,13 +210,7 @@ cambiar_path() {
 
 
 show_vmess_by_uuid() {
-
-    show_title
-
-    echo "⚠️ UDP CUSTOM FUE DESINSTALADO. ⚠️"
-
-    echo
-    
+  
   systemctl stop udp-custom &>/dev/null
   systemctl disable udp-custom &>/dev/null
   # systemctl stop udp-request &>/dev/null
@@ -242,11 +236,13 @@ show_vmess_by_uuid() {
   systemctl stop udpgw &>/dev/null
   rm -rf /usr/bin/udp
 
-    echo "⚠️ SERVICIOS DE UDP CUSTOM DETENIDOS Y ARCHIVOS ELIMINADOS. ⚠️"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    wait_for_enter
+    echo "  ¡UDP CUSTOM DESINSTALDO!  "
 
-    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    
+    echo
 }
 
 
@@ -263,7 +259,7 @@ entrar_v2ray_original() {
 
 while true; do
     show_menu
-    read -p "\033[1;32mSELECCIONE UNA OPCIÓN: \033[0m" opcion
+    read -p "SELECCIONE UNA OPCIÓN: " opcion
 
     case $opcion in
         1)
