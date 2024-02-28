@@ -1,23 +1,25 @@
 #!/bin/bash
 
-cd
-rm -rf /root/udp
-mkdir -p /root/udp
-
-# change to time GMT+3
-echo "change to time GMT+3"
-ln -fs /usr/share/zoneinfo/America/Argentina /etc/localtime
-
-# install udp-custom
-echo downloading udp-custom
+download_udpServer(){
+	msg -nama "        ${a30:-Descargando binario UDPserver} ....."
 	if wget -O /usr/bin/udpServer 'https://bitbucket.org/iopmx/udprequestserver/downloads/udpServer' &>/dev/null ; then
 		chmod +x /usr/bin/udpServer
+		msg -verd 'OK'
+	else
+		msg -verm2 'fail'
+		rm -rf /usr/bin/udpServer*
+	fi
+}
 
-echo downloading default config
-wget https://github.com/http-custom/udpcustom/blob/main/folder/config.json -O /root/udp/config.json &&
-chmod 644 /root/udp/config.json
+make_service(){
+	ip_nat=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | sed -n 1p)
+	interfas=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}'|grep "$ip_nat"|awk {'print $NF'})
+	ip_publica=$(grep -m 1 -oE '^[0-9]{1,3}(\.[0-9]{1,3}){3}$' <<< "$(wget -T 10 -t 1 -4qO- "http://ip1.dynupdate.no-ip.com/" || curl -m 10 -4Ls "http://ip1.dynupdate.no-ip.com/")")
 
-if [ -z "$1" ]; then
+	#ip_nat=$(fun_ip nat)
+	#interfas=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}'|grep "$ip_nat"|awk {'print $NF'})
+	#ip_publica=$(fun_ip)
+
 cat <<EOF > /etc/systemd/system/UDPserver.service
 [Unit]
 Description=UDPserver Service by @Rufu99
@@ -43,3 +45,4 @@ EOF
 	else
 		msg -verm2 'fail'
 	fi
+}
