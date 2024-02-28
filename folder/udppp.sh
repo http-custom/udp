@@ -67,8 +67,8 @@ show_menu() {
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 echo -e "\E[41;1;37m                ELIJA BINARIO UDP                 \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM HTTP CUSTOM\033[1;31m"
-    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST SOCKSIP\033[1;31m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM (HTTP CUSTOM)\033[1;31m"
+    echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST (SOCKSIP TUNNEL)\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;33m 5:\033[1;31m] \033[1;37m• \033[1;33mSALIR\033[1;31m "
@@ -194,15 +194,9 @@ show_registered_users() {
 
 cambiar_path() {
 
-    show_title
-
-    echo "INSTALANDO BAD VPN 7300 NO ES OBLIGATORIO"
-
     echo
 
     wget https://raw.githubusercontent.com/rudi9999/SocksIP-udpServer/main/UDPserver.sh; chmod +x UDPserver.sh; ./UDPserver.sh
-
-    wait_for_enter
 
 }
 
