@@ -20,41 +20,27 @@ chmod 644 /root/udp/config.json
 if [ -z "$1" ]; then
 cat <<EOF > /etc/systemd/system/UDPserver.service
 [Unit]
-Description=UDP Custom by ePro Dev. Team
+Description=UDPserver Service by @Rufu99
+After=network.target
 
 [Service]
-User=root
 Type=simple
-ExecStart=/root/bin/udpServer server
+User=root
 WorkingDirectory=/root
+ExecStart=/usr/bin/udpServer -ip=$ip_publica -net=$interfas$Port -mode=system
 Restart=always
 RestartSec=3s
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target6
 EOF
-else
-cat <<EOF > /etc/systemd/system/UDPserver.service
-[Unit]
-Description=UDP Custom by ePro Dev. Team
 
-[Service]
-User=root
-Type=simple
-ExecStart=/usr/bin/udpServer server -exclude $1
-WorkingDirectory=/root
-Restart=always
-RestartSec=3s
-
-[Install]
-WantedBy=default.target
-EOF
-fi
-
-echo start service udp-custom
-systemctl start UDPserver &>/dev/null
-
-echo enable service udp-custom
-systemctl enable UDPserver &>/dev/null
-
-echo history -c
+	msg -nama "        ${a31:-Ejecutando servicio UDPserver} ....."
+	systemctl start UDPserver &>/dev/null
+	if [[ $(systemctl is-active UDPserver) = 'active' ]]; then
+		msg -verd 'OK'
+		systemctl enable UDPserver &>/dev/null
+	else
+		msg -verm2 'fail'
+	fi
+}
