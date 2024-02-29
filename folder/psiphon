@@ -65,9 +65,9 @@ show_menu() {
     status_line=$(check_v2ray_status)
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-echo -e "\E[41;1;37m                ELIJA BINARIO UDP                 \E[0m"
+echo -e "\E[41;1;37m                MENU PSIPHON                 \E[0m"
 echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP CUSTOM (HTTP CUSTOM)\033[1;31m"
+    echo -e "[\033[1;36m 1:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR PSIPHON (443)\033[1;31m"
     echo -e "[\033[1;36m 2:\033[1;31m] \033[1;37m• \033[1;33mINSTALAR UDP REQUEST (SOCKSIP TUNNEL)\033[1;31m"
     echo -e "[\033[1;36m 3:\033[1;31m] \033[1;37m• \033[1;33mREINICIAR UDP CUSTOM\033[1;31m"
     echo -e "[\033[1;36m 4:\033[1;31m] \033[1;37m• \033[1;33mDESINSTALAR UDP CUSTOM\033[1;31m"
@@ -79,15 +79,15 @@ show_backup_menu() {
 
     echo
 
-    echo -e "\033[1;32mINSTALANDO UDP CUSTOM ESPERE...\033[0m"
+    echo -e "\033[1;32mFRONTED-MEEK-OSSH:443\033[0m"
     
-    echo -e "\033[1;32mEN CASO DE NO FUNCIONAR REINICIE LA VPS\033[0m"
+    echo -e "\033[1;32mSE NECESITA SOLO EL PUERTO 443 LIBRE\033[0m"
     
-    echo -e "\033[1;32mPUERTO POR DEFECTO 1-65535\033[0m"
+    echo -e "\033[1;32mSE RECOMIENDA TENER MINIMO UBUNTU 16 O SUPERIOR\033[0m"
     
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo -e "\033[1;33m        BINARIO SOLO FUNCIONA EN HTTP CUSTOM                 \033[0m"
+    echo -e "\033[1;33m        INSTALANDO PSIPHON ESPERE...                 \033[0m"
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     
@@ -109,11 +109,11 @@ show_backup_menu() {
 
     screen -dmS psiserver ./psiphond run
 
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
 
-    echo "  ¡INSTALACIÓN COMPLETA!  "
+    echo -e "\033[1;32m             ¡PSIPHON INSTALADO!                 \033[0m"
 
-    echo "————————————————————————————————————————————————————"
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
     
     echo
     
