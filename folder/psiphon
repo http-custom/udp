@@ -217,16 +217,6 @@ cambiar_path() {
 
 show_vmess_by_uuid() {
 
-    show_title
-
-    echo "REINICIANDO PSIPHON..."
-    
-    echo " "
-    
-    echo "¡COMPLETADO!"
-
-    echo
-
     cd /root/ && screen -dmS PSI ./psiphond run
 
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
