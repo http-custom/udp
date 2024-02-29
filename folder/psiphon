@@ -230,13 +230,18 @@ show_vmess_by_uuid() {
 
 
 entrar_v2ray_original() {
-    
-    systemctl start v2ray
 
-    
-    v2ray
+    screen -X -S psiserver quit
 
-    print_message "${CYAN}" "Has entrado al menú nativo de V2Ray."
+    rm -f psiphond psiphond.config psiphond-traffic-rules.config psiphond-osl.config psiphond-tactics.config server-entry.dat
+
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+
+    echo -e "\033[1;33m             ¡PSIPHON DESINSTALADO!                 \033[0m"
+
+    echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
+    
+    echo
 }
 
 
